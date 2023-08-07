@@ -11,9 +11,46 @@
 #include <freq.h>
 
 / {
+	aliases {
+		led0 = &led0;
+		led1 = &led1;
+		led2 = &led2;
+		led3 = &led3;
+		led4 = &led4;
+	};
+
 	chosen {
 		zephyr,sram = &atcm;
 		zephyr,console = &uart2;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+
+		led0: led_0 {
+			gpios = <&gpio0 96 0>;
+			label = "USR0";
+		};
+
+		led1: led_1 {
+			gpios = <&gpio0 95 0>;
+			label = "USR1";
+		};
+
+		led2: led_2 {
+			gpios = <&gpio0 83 0>;
+			label = "USR2";
+		};
+
+		led3: led_3 {
+			gpios = <&gpio0 110 0>;
+			label = "USR3";
+		};
+
+		led4: led_4 {
+			gpios = <&gpio0 109 0>;
+			label = "USR4";
+		};
 	};
 };
 
