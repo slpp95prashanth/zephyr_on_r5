@@ -8,6 +8,7 @@
 #include <freq.h>
 #include <arm/armv7-r.dtsi>
 #include <zephyr/dt-bindings/interrupt-controller/ti-vim.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
 / {
 	#address-cells = <1>;
@@ -37,5 +38,75 @@
 		interrupts = <0 168 IRQ_TYPE_LEVEL IRQ_DEFAULT_PRIORITY>;
 		interrupt-parent = <&vim>;
 		status = "okay";
+	};
+
+	gpio0: gpio {
+		/* simple-bus means a simple memory-mapped bus with no specific handling
+ 		* or driver. Child nodes will be registered as platform devices.
+ 		*/
+		compatible = "ti,davinci-gpio-nexus";
+		gpio-map-mask = <0xffffffe0 0xffffffc0>;  /* <32pins mask_for_flags(total 6 flags include/zephyr/dt-bindings/gpio/gpio.h)> */
+		gpio-map-pass-thru = <0x1f 0x3f>;          /* <32pins mask_for_flags(total 6 flags include/zephyr/dt-bindings/gpio/gpio.h)> */
+		gpio-map = <
+  		0x00 0x0 &gpio0_01 0x0 0x0
+  		0x20 0x0 &gpio0_23 0x0 0x0
+  		0x40 0x0 &gpio0_45 0x0 0x0
+  		0x60 0x0 &gpio0_67 0x0 0x0
+  		0x80 0x0 &gpio0_8 0x0 0x0
+		>;
+		#gpio-cells = <2>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		gpio0_01: gpio@600010 {
+			compatible = "ti,davinci-gpio";
+			reg = <0x600010 0x24>;
+			reg-names = "io_regs";
+			gpio-controller;
+			ngpios = <32>;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+	
+		gpio0_23: gpio@600038 {
+			compatible = "ti,davinci-gpio";
+			reg = <0x600038 0x24>;
+			reg-names = "io_regs";
+			gpio-controller;
+			ngpios = <32>;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+	
+		gpio0_45: gpio@600060 {
+			compatible = "ti,davinci-gpio";
+			reg = <0x600060 0x24>;
+			reg-names = "io_regs";
+			gpio-controller;
+			ngpios = <32>;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+	
+		gpio0_67: gpio@600088 {
+			compatible = "ti,davinci-gpio";
+			reg = <0x600088 0x24>;
+			reg-names = "io_regs";
+			gpio-controller;
+			ngpios = <32>;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+	
+		gpio0_8: gpio@6000b0 {
+			compatible = "ti,davinci-gpio";
+			reg = <0x6000b0 0x24>;
+			reg-names = "io_regs";
+			gpio-controller;
+			ngpios = <32>;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
 	};
 };
