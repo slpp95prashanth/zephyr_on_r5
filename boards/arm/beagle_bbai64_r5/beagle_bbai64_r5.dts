@@ -23,3 +23,24 @@
 	pinctrl-0 = <&uart2_tx_default &uart2_rx_default>;
 	pinctrl-names = "default";
 };
+
+&gpio0_01 {
+	status = "okay";
+};
+
+&gpio0_23 {
+	status = "okay";
+};
+
+&gpio0_45 {
+	status = "okay";
+};
+
+&gpio0_67 {
+	status = "okay";
+};
+
+&gpio0_8 {
+	status = "okay";
+};
+
