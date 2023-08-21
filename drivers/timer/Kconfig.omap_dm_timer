@@ -6,6 +6,7 @@
 config OMAP_DM_TIMER
 	bool "TI Dual-Mode Timer"
 	default y
+	select TICKLESS_CAPABLE
 	depends on DT_HAS_TI_AM654_DMTIMER_ENABLED
 	help
 		This module implements a kernel device driver for TI dual-mode timer. This

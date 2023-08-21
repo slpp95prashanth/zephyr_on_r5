@@ -9,6 +9,7 @@
 
 #include <zephyr/devicetree.h>
 
+#define TI_DM_TIMER_COUNTER_MAX
 #define TI_DM_TIMER_BASE_ADDR      DT_REG_ADDR(DT_INST(0, ti_am654_dmtimer))
 
 #define TI_DM_TIMER_IRQ_NUM        DT_IRQN(DT_INST(0, ti_am654_dmtimer))
